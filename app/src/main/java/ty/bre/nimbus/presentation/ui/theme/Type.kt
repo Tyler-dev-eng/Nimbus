@@ -1,4 +1,4 @@
-package ty.bre.nimbus.ui.theme
+package ty.bre.nimbus.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
