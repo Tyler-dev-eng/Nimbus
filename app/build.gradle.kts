@@ -71,7 +71,6 @@ dependencies {
 
     // Location Services
     implementation(libs.play.services.location)
-    implementation(libs.androidx.core.location)
 
     // Networking (Retrofit/OkHttp)
     implementation(libs.okhttp)
