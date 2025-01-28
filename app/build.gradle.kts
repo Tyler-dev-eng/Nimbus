@@ -8,16 +8,18 @@ plugins {
 
 android {
     namespace = "ty.bre.nimbus"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ty.bre.nimbus"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://api.open-meteo.com\"")
     }
 
     buildTypes {
@@ -37,6 +39,7 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
@@ -66,8 +69,6 @@ dependencies {
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    kapt(libs.androidx.hilt.compiler)
 
     // Location Services
     implementation(libs.play.services.location)
