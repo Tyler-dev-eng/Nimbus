@@ -49,11 +49,20 @@ fun WeatherCard(
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "Today ${data.time.format(DateTimeFormatter.ofPattern("HH:mm"))}",
-                    modifier = Modifier.align(Alignment.End),
-                    color = Color(0xFF333333)
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = state.locationName ?: "",
+                        color = Color(0xFF333333)
+                    )
+
+                    Text(
+                        text = "Today ${data.time.format(DateTimeFormatter.ofPattern("HH:mm"))}",
+                        color = Color(0xFF333333)
+                    )
+                }
 
                 Spacer(Modifier.height(16.dp))
 
