@@ -8,12 +8,21 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import dagger.hilt.android.AndroidEntryPoint
 import ty.bre.nimbus.presentation.WeatherCard
+import ty.bre.nimbus.presentation.WeatherForecast
 import ty.bre.nimbus.presentation.WeatherViewModel
 import ty.bre.nimbus.presentation.ui.theme.NimbusTheme
 
@@ -38,15 +47,36 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             NimbusTheme {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color(0xFF87CEEB))
+                Box(
+                    modifier = Modifier.fillMaxSize()
                 ) {
-                    WeatherCard(
-                        state = viewModel.state,
-                        backgroundColour = Color(0xFFF5F5F5),
-                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xFF87CEEB))
+                    ) {
+                        WeatherCard(
+                            state = viewModel.state,
+                            backgroundColour = Color(0xFFF5F5F5),
+                        )
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        WeatherForecast(state = viewModel.state)
+                    }
+                    if (viewModel.state.isLoading) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.align(Alignment.Center)
+                        )
+                    }
+                    viewModel.state.error?.let { error ->
+                        Text(
+                            text = error,
+                            color = Color.Red,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.align(Alignment.Center)
+                        )
+                    }
                 }
             }
         }
