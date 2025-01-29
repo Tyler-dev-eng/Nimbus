@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
@@ -54,6 +56,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .background(Color(0xFF87CEEB))
+                            .verticalScroll(rememberScrollState())
                     ) {
                         WeatherCard(
                             state = viewModel.state,
@@ -64,7 +67,7 @@ class MainActivity : ComponentActivity() {
                     }
                     if (viewModel.state.isLoading) {
                         CircularProgressIndicator(
-                            modifier = Modifier.align(Alignment.Center)
+                            modifier = Modifier.align(Alignment.Center), color = Color.White
                         )
                     }
                     viewModel.state.error?.let { error ->
