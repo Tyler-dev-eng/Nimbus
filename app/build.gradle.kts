@@ -76,8 +76,8 @@ dependencies {
     // Networking (Retrofit/OkHttp)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-    implementation(libs.retrofit)
-    implementation(libs.converter.moshi)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     // Testing
     testImplementation(libs.junit)
