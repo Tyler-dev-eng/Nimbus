@@ -19,7 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ty.bre.nimbus.domain.util.Screen
+import ty.bre.nimbus.domain.util.SetupNavGraph
 import ty.bre.nimbus.presentation.WeatherCard
 import ty.bre.nimbus.presentation.WeatherForecast
 import ty.bre.nimbus.presentation.WeatherViewModel
@@ -46,36 +50,12 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             NimbusTheme {
-                Box(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color(0xFF87CEEB))
-                            .verticalScroll(rememberScrollState())
-                    ) {
-                        WeatherCard(
-                            state = viewModel.state,
-                            backgroundColour = Color(0xFFF5F5F5),
-                        )
-
-                        WeatherForecast(state = viewModel.state)
-                    }
-                    if (viewModel.state.isLoading) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.align(Alignment.Center), color = Color.White
-                        )
-                    }
-                    viewModel.state.error?.let { error ->
-                        Text(
-                            text = error,
-                            color = Color.Red,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                    }
-                }
+                val navController = rememberNavController()
+                SetupNavGraph(
+                    navController = navController,
+                    startDestination = Screen.FirstScreen,
+                    viewModel = viewModel
+                )
             }
         }
     }
