@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import ty.bre.nimbus.domain.util.Screen
+import ty.bre.nimbus.presentation.ui.theme.jetBrainsMono
 
 @Composable
 fun WeatherForecast(
@@ -35,13 +37,15 @@ fun WeatherForecast(
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = CenterVertically
             ) {
                 Text(
                     text = "Today",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF333333)
+                    color = Color(0xFF333333),
+                    fontFamily = jetBrainsMono
                 )
 
                 Text(
@@ -52,7 +56,8 @@ fun WeatherForecast(
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.SecondScreen)
                     },
-                    textDecoration = TextDecoration.Underline
+                    textDecoration = TextDecoration.Underline,
+                    fontFamily = jetBrainsMono
                 )
             }
         }

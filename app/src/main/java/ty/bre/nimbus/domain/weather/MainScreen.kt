@@ -13,11 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import ty.bre.nimbus.presentation.WeatherCard
 import ty.bre.nimbus.presentation.WeatherForecast
 import ty.bre.nimbus.presentation.WeatherViewModel
+import ty.bre.nimbus.presentation.ui.theme.jetBrainsMono
 
 @Composable
 fun MainScreen(
@@ -55,7 +57,9 @@ fun MainScreen(
                 text = error,
                 color = Color.Red,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
+                fontFamily = jetBrainsMono,
+                fontWeight = FontWeight.SemiBold
             )
         }
     }

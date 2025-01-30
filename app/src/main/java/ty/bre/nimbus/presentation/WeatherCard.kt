@@ -22,9 +22,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ty.bre.nimbus.R
+import ty.bre.nimbus.presentation.ui.theme.jetBrainsMono
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -54,22 +56,36 @@ fun WeatherCard(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Row {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Image(
                             painter = painterResource(id = R.drawable.location),
                             contentDescription = null,
                             colorFilter = ColorFilter.tint(Color(0xFF333333))
                         )
 
+                        Spacer(Modifier.width(5.dp))
+
                         Text(
                             text = state.locationName ?: "",
-                            color = Color(0xFF333333)
+                            style = TextStyle(
+                                fontFamily = jetBrainsMono,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 18.sp,
+                                color = Color(0xFF333333)
+                            ),
                         )
                     }
 
                     Text(
                         text = "Today ${data.time.format(DateTimeFormatter.ofPattern("HH:mm"))}",
-                        color = Color(0xFF333333)
+                        style = TextStyle(
+                            fontFamily = jetBrainsMono,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 16.sp,
+                            color = Color(0xFF333333)
+                        ),
                     )
                 }
 
@@ -85,16 +101,24 @@ fun WeatherCard(
 
                 Text(
                     text = "${data.temperatureCelsius}°C",
-                    fontSize = 45.sp,
-                    color = Color(0xFF333333)
+                    style = TextStyle(
+                        fontFamily = jetBrainsMono,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 45.sp,
+                        color = Color(0xFF333333)
+                    ),
                 )
 
                 Spacer(Modifier.height(16.dp))
 
                 Text(
                     text = data.weatherType.weatherDesc,
-                    fontSize = 20.sp,
-                    color = Color(0xFF333333)
+                    style = TextStyle(
+                        fontFamily = jetBrainsMono,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 20.sp,
+                        color = Color(0xFF333333)
+                    ),
                 )
 
                 Spacer(Modifier.height(32.dp))
@@ -108,21 +132,33 @@ fun WeatherCard(
                         unit = "hpa",
                         icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
                         iconColor = Color(0xFF333333),
-                        textStyle = TextStyle(color = Color(0xFF333333))
+                        textStyle = TextStyle(
+                            color = Color(0xFF333333),
+                            fontFamily = jetBrainsMono,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     )
                     WeatherDateDisplay(
                         value = data.humidity.toInt(),
                         unit = "%",
                         icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
                         iconColor = Color(0xFF333333),
-                        textStyle = TextStyle(color = Color(0xFF333333))
+                        textStyle = TextStyle(
+                            color = Color(0xFF333333),
+                            fontFamily = jetBrainsMono,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     )
                     WeatherDateDisplay(
                         value = data.windSpeed.toInt(),
                         unit = "km/h",
                         icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
                         iconColor = Color(0xFF333333),
-                        textStyle = TextStyle(color = Color(0xFF333333))
+                        textStyle = TextStyle(
+                            color = Color(0xFF333333),
+                            fontFamily = jetBrainsMono,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     )
                 }
 

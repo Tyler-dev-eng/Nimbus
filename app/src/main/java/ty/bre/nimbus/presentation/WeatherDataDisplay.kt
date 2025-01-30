@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import ty.bre.nimbus.presentation.ui.theme.jetBrainsMono
 
 @Composable
 fun WeatherDateDisplay(
@@ -38,7 +39,7 @@ fun WeatherDateDisplay(
 
         Text(
             text = "$value$unit",
-            style = textStyle
+            style = textStyle.copy(fontFamily = jetBrainsMono)
         )
     }
 }

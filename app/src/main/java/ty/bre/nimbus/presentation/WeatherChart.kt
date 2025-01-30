@@ -4,6 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
@@ -14,7 +15,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import ty.bre.nimbus.presentation.ui.theme.jetBrainsMono
 
 @Composable
 fun WeatherChart(
@@ -27,14 +30,13 @@ fun WeatherChart(
         val evening = data.find { it.time.toLocalTime().hour == 19 }
         val night = data.find { it.time.toLocalTime().hour == 1 }
 
-        // Labels for the X-axis
         val labels = listOf("Morning", "Afternoon", "Evening", "Night")
 
         val temperatureData = listOf(
-            Pair(0, morning?.temperatureCelsius?.toFloat() ?: 0f), // Morning
-            Pair(1, afternoon?.temperatureCelsius?.toFloat() ?: 0f), // Afternoon
-            Pair(2, evening?.temperatureCelsius?.toFloat() ?: 0f), // Evening
-            Pair(3, night?.temperatureCelsius?.toFloat() ?: 0f)  // Night
+            Pair(0, morning?.temperatureCelsius?.toFloat() ?: 0f),
+            Pair(1, afternoon?.temperatureCelsius?.toFloat() ?: 0f),
+            Pair(2, evening?.temperatureCelsius?.toFloat() ?: 0f),
+            Pair(3, night?.temperatureCelsius?.toFloat() ?: 0f)
         )
 
         Card(
@@ -49,7 +51,13 @@ fun WeatherChart(
                 .fillMaxWidth()
                 .height(200.dp)
         ) {
-            Text(text = "Temperature", color = Color.Black)
+            Text(
+                text = "Temperature",
+                color = Color.Black,
+                fontFamily = jetBrainsMono,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(8.dp)
+            )
 
             Canvas(
                 modifier = Modifier.fillMaxSize()
