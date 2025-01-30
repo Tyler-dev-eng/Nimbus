@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
@@ -22,7 +23,7 @@ import ty.bre.nimbus.presentation.WeatherViewModel
 fun MainScreen(
     navController: NavHostController,
     viewModel: WeatherViewModel,
-){
+) {
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -30,7 +31,11 @@ fun MainScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFF87CEEB))
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(Color(0xFF87CEEB), Color(0xFF4682B4))
+                    )
+                )
                 .verticalScroll(rememberScrollState())
         ) {
             WeatherCard(
