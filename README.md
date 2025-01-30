@@ -22,5 +22,6 @@ This app was built following a tutorial by Philipp Lackner (https://www.youtube.
 
 ## Screenshots
 <div style="display: flex; justify-content: space-evenly; gap: 20px;">
-  <img src="https://github.com/Tyler-dev-eng/Nimbus/blob/main/Screenshot_20250130_084640.png" width="250" height="550" />
+  <img src="https://github.com/Tyler-dev-eng/Nimbus/blob/main/Screenshot_20250130_212623.png" width="250" height="550" />
+  <img src="https://github.com/Tyler-dev-eng/Nimbus/blob/main/Screenshot_20250130_212646.png" width="250" height="550" />
 </div>
